@@ -1,27 +1,29 @@
 import { useState } from "react";
-/* import styled from 'styled-components';
-
+import styled from "styled-components";
 
 const Button = styled.button`
-background-color: #8A9A5B		;
-color:white;
-font-size:15px;
-border: solid #8A9A5B 1px;
-border-radious: 3px;
-margin:5px;
+  background-color: #faa0a0;
+  color: white;
+  font-size: 15px;
+  border: solid #faa0a0 1px;
+  border-radious: 5px;
+  margin: 5px;
 `;
 
 const Input = styled.input`
-width: 300px;
-height: 20px;
-background-color: white;
-color: black;
-border: none;
-border-radious: 3px;
-margin: 5px;
-font-size: 15px;
+  width: 300px;
+  height: 20px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radious: 3px;
+  margin: 5px;
+  font-size: 15px;
 `;
-*/
+
+const H2 = styled.h2`
+  color: white;
+`;
 
 function Word() {
   const [word, setWord] = useState("");
@@ -36,6 +38,13 @@ function Word() {
   function handleMeaningChange(e) {
     setMeaning(e.target.value);
     console.log(meaning);
+  }
+
+  function handleKeyDown(e) {
+    console.log(e.key)
+    if (e.key === "Enter") {
+      addVocab();
+    }
   }
 
   function addVocab() {
@@ -57,29 +66,29 @@ function Word() {
     <div>
       <div className="word-input">
         <div>
-          <input
-          id="word"
-          type="text"
-          placeholder="enter word here"
-          value={word}
-          onChange={handleWordChange}>
-          </input>
+          <Input
+            id="word"
+            type="text"
+            placeholder="enter word here"
+            value={word}
+            onChange={handleWordChange}
+            onKeyDown={handleKeyDown}
+          ></Input>
         </div>
         <div>
-          <input
+          <Input
             id="meaning"
             type="text"
             placeholder="enter meaning here"
             value={meaning}
             onChange={handleMeaningChange}
-          ></input>
+            onKeyDown={handleKeyDown}
+          ></Input>
         </div>
-        <button onClick={addVocab}>
-          add word to your wordlist
-          </button>
+        <Button onClick={addVocab}>add word to your wordlist</Button>
       </div>
       <div className="print-out">
-        <h2>Vocabulary List</h2>
+        <H2>Vocabulary List</H2>
         {vocabList.map((vocab) => (
           <div className="vocab-list">
             <div className="word">{vocab.word}</div>

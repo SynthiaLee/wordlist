@@ -1,7 +1,15 @@
+import styled from "styled-components";
+
+const H1 = styled.h1`
+color: white;
+font-size: 50px;
+margin: 20px;
+`;
+
 function Title() {
   return (
     <div className="title">
-      <h1>Vocabulary List</h1>
+      <H1>Vocabulary List</H1>
     </div>
   );
 }
