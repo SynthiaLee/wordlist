@@ -1,7 +1,17 @@
+import styled from "styled-components";
+
+const H1 = styled.h1`
+color:white;
+font-size: 30px;
+border-bottom: solid white 3px;
+`;
+
+
 function Menu() {
   return (
-      <div>
-      <h1>Menu test</h1>
+    <div>
+      <H1>Options</H1>
+
     </div>
   );
 }

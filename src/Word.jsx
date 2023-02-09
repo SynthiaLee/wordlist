@@ -6,7 +6,7 @@ const Button = styled.button`
   color: white;
   font-size: 15px;
   border: solid #faa0a0 1px;
-  border-radious: 5px;
+  border-radius: 5px;
   margin: 5px;
 `;
 
@@ -16,7 +16,7 @@ const Input = styled.input`
   background-color: white;
   color: black;
   border: none;
-  border-radious: 3px;
+  border-radius: 3px;
   margin: 5px;
   font-size: 15px;
 `;
@@ -61,6 +61,7 @@ function Word() {
       alert("Please fill in both boxes to add new vocabulary");
     }
   }
+
 
   return (
     <div>
