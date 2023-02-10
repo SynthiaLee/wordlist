@@ -32,35 +32,35 @@ function Word() {
 
   function handleWordChange(e) {
     setWord(e.target.value);
-    console.log(word);
   }
 
   function handleMeaningChange(e) {
     setMeaning(e.target.value);
-    console.log(meaning);
   }
 
   function handleKeyDown(e) {
-    console.log(e.key)
+    
     if (e.key === "Enter") {
       addVocab();
     }
   }
 
+  function removeVocab(idx) {
+    setVocabList(vocabList.filter((vocab, i) => i !== idx));
+  }
+  
   function addVocab() {
     if (word.length > 0 && meaning.length > 0) {
-      if (isNaN(word) && isNaN(meaning)) {
-        const newVocab = { word: word, meaning: meaning };
-        setVocabList([...vocabList, newVocab]);
-        setWord("");
-        setMeaning("");
-      } else {
-        alert("No numbers are needed");
-      }
+      const newVocab = { word: word, meaning: meaning };
+      setVocabList([...vocabList, newVocab]);
+      setWord("");
+      setMeaning("");
     } else {
       alert("Please fill in both boxes to add new vocabulary");
     }
   }
+
+
 
 
   return (
@@ -73,7 +73,7 @@ function Word() {
             placeholder="enter word here"
             value={word}
             onChange={handleWordChange}
-            onKeyDown={handleKeyDown}
+            onKeyPress={handleKeyDown}
           ></Input>
         </div>
         <div>
@@ -83,7 +83,7 @@ function Word() {
             placeholder="enter meaning here"
             value={meaning}
             onChange={handleMeaningChange}
-            onKeyDown={handleKeyDown}
+            onKeyPress={handleKeyDown}
           ></Input>
         </div>
         <Button onClick={addVocab}>add word to your wordlist</Button>
@@ -94,6 +94,7 @@ function Word() {
           <div className="vocab-list">
             <div className="word">{vocab.word}</div>
             <div className="meaning">{vocab.meaning}</div>
+            <Button onClick={() => removeVocab(idx)}> remove </Button>
           </div>
         ))}
       </div>
