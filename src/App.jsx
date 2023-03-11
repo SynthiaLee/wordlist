@@ -1,15 +1,6 @@
-import Title from './Title';
-import Body from './Body';
-import './App.css';
-
-/* import styled from 'styled-components';
-
-const Name = styled.h1`
-color:green;
-font-size:30px;
-text-align:center;
-`;
-*/
+import Title from "./Title";
+import Body from "./Body";
+import "./App.css";
 
 function App() {
   return (
@@ -17,7 +8,7 @@ function App() {
       <Title />
       <Body />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -25,7 +25,7 @@ const H2 = styled.h2`
   color: white;
 `;
 
-function Word() {
+function Word({ definition }) {
   const [word, setWord] = useState("");
   const [meaning, setMeaning] = useState("");
   const [vocabList, setVocabList] = useState([]);
@@ -39,7 +39,6 @@ function Word() {
   }
 
   function handleKeyDown(e) {
-    
     if (e.key === "Enter") {
       addVocab();
     }
@@ -48,7 +47,7 @@ function Word() {
   function removeVocab(idx) {
     setVocabList(vocabList.filter((vocab, i) => i !== idx));
   }
-  
+
   function addVocab() {
     if (word.length > 0 && meaning.length > 0) {
       const newVocab = { word: word, meaning: meaning };
@@ -60,11 +59,9 @@ function Word() {
     }
   }
 
-
-
-
   return (
     <div>
+      {JSON.stringify(definition)};
       <div className="word-input">
         <div>
           <Input
@@ -90,10 +87,10 @@ function Word() {
       </div>
       <div className="print-out">
         <H2>Vocabulary List</H2>
-        {vocabList.map((vocab) => (
+        {vocabList.map((vocab, idx) => (
           <div className="vocab-list">
             <div className="word">{vocab.word}</div>
-            <div className="meaning">{vocab.meaning}</div>
+            {definition ? <div className="meaning">{vocab.meaning}</div> : null}
             <Button onClick={() => removeVocab(idx)}> remove </Button>
           </div>
         ))}
